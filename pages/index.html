@@ -1,30 +1,66 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="out.css">
-  <title>Tailwind CSS</title>
+  <title>予算管理アプリ</title>
 </head>
-<body class="bg-slate-900 flex justify-center">
-  <div class="max-w-5xl pt-20 lg:pt-32 mx-2">
-    <h1 class="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl pb-3 text-sky-500 tracking-tight text-center">Rapidly build modern websites without ever leaving your HTML.</h1>
-    <p class="mt-6 text-lg text-slate-600 text-center max-w-3xl mx-auto dark:text-slate-400">
-      A utility-first CSS framework packed with classes like 
-      <code class="font-mono font-medium text-sky-500 dark:text-sky-400">flex</code>, 
-      <code class="font-mono font-medium text-sky-500 dark:text-sky-400">pt-4</code>, 
-      <code class="font-mono font-medium text-sky-500 dark:text-sky-400">text-center</code> and 
-      <code class="font-mono font-medium text-sky-500 dark:text-sky-400">rotate-90</code> that can be composed to build any design, directly in your markup. Now in replit!
-    </p>
-    <div class="w-full flex justify-center">
-        <a href="https://tailwindcss.com/docs/utility-first" class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 m-5 flex" target="_blank">
-        Visit the documentation
-      </a>
-    </div>
+<body class="bg-slate-100 min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <h1 class="text-3xl font-bold text-center text-slate-800 mb-8">予算管理アプリ</h1>
     
+    <!-- 予算サマリー -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="bg-green-500 text-white p-6 rounded-lg shadow-md">
+        <h2 class="text-lg font-semibold">総収入</h2>
+        <p class="text-2xl font-bold" id="total-income">¥0</p>
+      </div>
+      <div class="bg-red-500 text-white p-6 rounded-lg shadow-md">
+        <h2 class="text-lg font-semibold">総支出</h2>
+        <p class="text-2xl font-bold" id="total-expense">¥0</p>
+      </div>
+      <div class="bg-blue-500 text-white p-6 rounded-lg shadow-md">
+        <h2 class="text-lg font-semibold">残高</h2>
+        <p class="text-2xl font-bold" id="balance">¥0</p>
+      </div>
+    </div>
+
+    <!-- 入力フォーム -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+      <h2 class="text-xl font-semibold mb-4">新しい取引を追加</h2>
+      <form id="transaction-form">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <input type="text" id="description" placeholder="説明" required 
+                 class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <input type="number" id="amount" placeholder="金額" required 
+                 class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <select id="type" required 
+                  class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">種類を選択</option>
+            <option value="income">収入</option>
+            <option value="expense">支出</option>
+          </select>
+          <button type="submit" 
+                  class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200">
+            追加
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 取引履歴 -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-xl font-semibold mb-4">取引履歴</h2>
+      <div id="transactions-list" class="space-y-2">
+        <p class="text-gray-500 text-center">取引がありません</p>
+      </div>
+    </div>
   </div>
-  
+
+  <script src="script.js"></script>
 </body>
 </html>
