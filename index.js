@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, "pages/")))
 app.get("/", (req,res) => {
   exec('npx tailwindcss -i ./input.css -o ./public/out.css ', (err, stdout, stderr) => {
   if (err) {
-    // node couldn't execute the command
+    // node couldn't execute the command1
     return;
   }
 });
