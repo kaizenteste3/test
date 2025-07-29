@@ -20,7 +20,7 @@ class BudgetManager {
     const type = document.getElementById('type').value;
 
     if (!description || !amount || !type) {
-      alert('すべてのフィールドを入力してください');
+      alert('すべてのフィールドを入力してください!!');
       return;
     }
 
